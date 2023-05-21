@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,3 +27,7 @@ Auth::routes();
 Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');
+
+Route::get('/index'     , [ProductosController::class, 'index'])    ->name('product.index');
+Route::get('/product'   , [ProductosController::class, 'create'])   ->name('product.create');
+Route::post('/store'    , [ProductosController::class, 'store'])    ->name('product.store');

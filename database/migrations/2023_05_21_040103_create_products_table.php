@@ -14,15 +14,12 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('codigo')->default(1000);
+
             $table->char('descripcion');
             $table->integer('stock');
             $table->integer('stock_minimo');
             $table->decimal('precio_compra', 8, 3);
-            $table->decimal('precio_maximo', 8, 3);
-            $table->decimal('precio_medio', 8, 3);
-            $table->decimal('precio_minimo', 8, 3);
-            $table->decimal('precio_flotante', 8, 3);
+
             $table->timestamps();
             $table->softDeletes();
         });
