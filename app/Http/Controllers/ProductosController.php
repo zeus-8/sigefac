@@ -13,8 +13,10 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        $product = DB::table('products')->whereNull('deleted_at')->get();
-        dd($product);
+        $products = DB::table('products')->whereNull('deleted_at')->get();
+        //$products = Product::all();
+        //dd($products);
+        return view('product.index', compact('products'));
     }
 
     /**
@@ -31,12 +33,18 @@ class ProductosController extends Controller
     public function store(Request $request)
     {
         //dd($request);
-        Product::create([
+
+        $product = Product::create([
             'descripcion'       => $request['descripcion'],
             'stock'             => $request['stock'],
             'precio_compra'     => $request['precio_compra'],
             'stock_minimo'      => $request['stock_minimo'],
         ]);
+
+        $codigo = $this->generarCodigo($product->id);
+
+        $product->codigo = $codigo;
+        $product->save();
 
         return redirect()->route('product.index');
     }
@@ -44,9 +52,10 @@ class ProductosController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request)
     {
-        //
+        $x = 'bien';
+        return $x;
     }
 
     /**
@@ -54,8 +63,9 @@ class ProductosController extends Controller
      */
     public function edit(string $id)
     {
-        dd('bien');
         $product = Product::find($id);
+        //dd($id,$product);
+        return view('product.edit', compact('product'));
 
     }
 
@@ -70,9 +80,9 @@ class ProductosController extends Controller
         $product->stock             = $request->stock;
         $product->stock_minimo      = $request->stock_minimo;
         $product->precio_compra     = $request->precio_compra;
-
         $product->save();
 
+        return redirect()->route('product.index');
     }
 
     /**
@@ -81,6 +91,18 @@ class ProductosController extends Controller
     public function destroy(string $id)
     {
         $product = Product::find($id);
-        $product->deleted();
+        $product->delete();
+
+        return redirect()->route('product.index');
+    }
+
+    public function generarCodigo ($valor){
+        $letras = 'BK';
+        $longitudTotal = 8;
+
+        $cantidadCeros = $longitudTotal - strlen($letras) - strlen($valor);
+        $codigo = $letras . '-' . str_repeat('0', $cantidadCeros) . $valor;
+
+        return $codigo;
     }
 }

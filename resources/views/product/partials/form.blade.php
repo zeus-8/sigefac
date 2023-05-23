@@ -1,3 +1,4 @@
+
 <div class="card-body">
     <div class="form-group{{ $errors->has('descripcion') ? ' has-error' : '' }}">
         {!! Form::label('descripcion', 'Descripcion del Producto') !!}

@@ -28,6 +28,14 @@ Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');
 
-Route::get('/index'     , [ProductosController::class, 'index'])    ->name('product.index');
-Route::get('/product'   , [ProductosController::class, 'create'])   ->name('product.create');
-Route::post('/store'    , [ProductosController::class, 'store'])    ->name('product.store');
+Route::prefix('product')->group(function () {
+    Route::get('/'              , [ProductosController::class, 'index'])    ->name('product.index');
+    Route::get('/create'        , [ProductosController::class, 'create'])   ->name('product.create');
+    Route::post('/create'       , [ProductosController::class, 'store'])    ->name('product.store');
+    Route::get('/show'          , [ProductoController::class , 'show'])     ->name('product.show');
+    Route::get('/{id}/edit'     , [ProductosController::class, 'edit'])     ->name('product.edit');
+    Route::put('/{id}'          , [ProductosController::class, 'update'])   ->name('product.update');
+    Route::get('/{id}/destroy'  , [ProductosController::class, 'destroy'])  ->name('product.destroy');
+
+});
+
