@@ -14,7 +14,7 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -22,7 +22,7 @@ class CustomersController extends Controller
      */
     public function create()
     {
-
+        return view('customer.create');
     }
 
     /**
@@ -87,7 +87,7 @@ class CustomersController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        
+
     }
 
     /**
