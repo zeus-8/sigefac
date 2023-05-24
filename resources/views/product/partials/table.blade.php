@@ -7,7 +7,7 @@
     <div class="col-md-10">
         <div class="card">
             <div class="card-header">
-              
+
               <a href="{{ URL::to('product/create') }}" class="btn btn-success float-right"><i class="fas fa-user-plus"> Nuevo Producto</i></a> <br><br>
             </div>
             <div class="card-body">
@@ -46,10 +46,10 @@
 @section('js')
     <script>
         $(document).ready(function() {
-           // $('#show-product').on('show.bs.modal', function (event) {
+            $('#show-product').on('show.bs.modal', function (event) {
                 var token = $('input[name="_token"]').val();
                 var url = '/product/show';
-
+                var id =
                 $.ajax({
                     url: url,
                     type: 'GET',
@@ -64,7 +64,7 @@
                         // Manejar el error
                     }
                 });
-           // });
+            });
         });
 
         $('#products').DataTable({
