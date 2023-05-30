@@ -12,16 +12,16 @@
         <div class="col-md-8">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Quick Example</h3>
+                    <h3 class="card-title">Crear Producto</h3>
                 </div>
                 {!! Form::open(['method' => 'POST', 'route' => 'product.store', 'class' => 'form-horizontal']) !!}
-                   
+
                     @include('product.partials.form')
 
-                    <div class="d-flex justify-content-end">
+                    <div class="card-footer">
                         {{-- {!! Form::reset("Borrar", ['class' => 'btn btn-info']) !!} --}}
-                        {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
-                        <a href="{{route('product.index')}}" class="btn btn-danger">Cancelar</a>
+                        {!! Form::submit('Guardar', ['class' => 'btn btn-primary float-end']) !!}
+                        <a href="{{route('product.index')}}" class="btn btn-danger float-end">Cancelar</a>
                     </div>
                 {!! Form::close() !!}
 
