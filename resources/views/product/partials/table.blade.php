@@ -67,6 +67,10 @@
             });
         });
 
+        function sendCode (id){
+            
+        }
+
         $('#products').DataTable({
             "paging": true,
             "lengthChange": true,
