@@ -78,16 +78,16 @@
 
                     var template =`
                     <dl class="row">
-                        <dt class="col-sm-4 text-right">Codigo:</dt>
-                        <dd class="col-sm-8 text-left">${data.codigo}</dd>
-                        <dt class="col-sm-4 text-right">Descripcion:</dt>
-                        <dd class="col-sm-8 text-left">${data.descripcion}</dd>
-                        <dt class="col-sm-4 text-right ">Stock</dt>
-                        <dd class="col-sm-8 text-left ${colorClass}"><b>${data.stock}</b></dd>
-                        <dt class="col-sm-4 text-right">Stock Minimo</dt>
-                        <dd class="col-sm-8 text-left">${data.stock_minimo}</dd>
-                        <dt class="col-sm-4 text-right">Precion Ultima Compra</dt>
-                        <dd class="col-sm-8 text-left"><b>${price}</b></dd>
+                        <dt class="col-sm-5 text-right">Codigo:</dt>
+                        <dd class="col-sm-7 text-left">${data.codigo}</dd>
+                        <dt class="col-sm-5 text-right">Descripcion:</dt>
+                        <dd class="col-sm-7 text-left">${data.descripcion}</dd>
+                        <dt class="col-sm-5 text-right ">Stock</dt>
+                        <dd class="col-sm-7 text-left ${colorClass}"><b>${data.stock}</b></dd>
+                        <dt class="col-sm-5 text-right">Stock Minimo</dt>
+                        <dd class="col-sm-7 text-left">${data.stock_minimo}</dd>
+                        <dt class="col-sm-5 text-right">Precion Ultima Compra</dt>
+                        <dd class="col-sm-7 text-left"><b>${price}</b></dd>
                     </dl>
                     `;
 

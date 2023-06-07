@@ -32,11 +32,11 @@ class ProductRequest extends FormRequest
     public function messages()
     {
         return [
-            'descripcion.required'      => 'El Campo descripcion es obligatorio.',
+            'descripcion.required'      => 'El campo descripcion es obligatorio.',
             'descripcion.min'           => 'El campo descripcion debe tener almenos 5 caracteres.',
-            'precio_compra.required'    => 'El Campo precio es obligatorio.',
-            'precio_compra.numeric'     => 'El Campo precio debe ser numérico.',
-            'precio_compra.decimal'     => 'El Campo precio debe tener entre 1 y 3 decimales.',
+            'precio_compra.required'    => 'El campo precio ultima compra es obligatorio.',
+            'precio_compra.numeric'     => 'El campo precio ultima compra debe ser numérico.',
+            'precio_compra.decimal'     => 'El campo precio ultima compra debe tener entre 1 y 3 decimales.',
             'stock.required'            => 'El campo Stock es obligatorio',
             'stock.numeric'             => 'El campo Stock debe ser numérico',
             'stock_minimo.required'     => 'El campo Stock Minimo es obligatorio',
