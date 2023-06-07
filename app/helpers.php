@@ -1,6 +1,6 @@
 <?php
 
-function generarCodigo ($valor, $module){
+function generarCodigo($valor, $module){
 
     switch ($module) {
         case 'p':
