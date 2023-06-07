@@ -30,7 +30,8 @@
                                     {!! Form::hidden('id', $product->id) !!}
                                     <button class="btn btn-primary btn-sm" onclick="sendCode({{$product->id}})"><i class=" fas fa-eye"></i></button>
                                     <a href="{{ route('product.edit', $product->id)}}" class="btn btn-warning btn-sm"><i class=" fas fa-edit"></i></a>
-                                    <a href="{{ route('product.destroy', $product->id)}}" onclick="return confirm('¿Seguro que deseas eliminarlo?')" class="btn btn-danger btn-sm"><i class=" fas fa-trash"></i></a>
+                                    <button class="btn btn-danger btn-sm" onclick="eliminar({{$product->id}})"><i class=" fas fa-trash"></i></button>
+                                    {{-- <a href="{{ route('product.destroy', $product->id)}}" onclick="return confirm('¿Seguro que deseas eliminarlo?')" class="btn btn-danger btn-sm"><i class=" fas fa-trash"></i></a> --}}
                                 </td>
                             </tr>
                         @endforeach
@@ -118,25 +119,42 @@
 
 
 
-        // function eliminar(){
-        //     Swal.fire({
-        //         title: 'Esta seguro?',
-        //         text: "Se eliminara el producto!",
-        //         showCancelButton: true,
-        //         //confirmButtonColor: '#3085d6',
-        //         confirmButtonColor: '#d33',
-        //         cancelButtonColor: '#28a745',
-        //         confirmButtonText: 'Si, eliminar!'
-        //     }).then((result) => {
-        //         if (result.isConfirmed) {
-        //             Swal.fire(
-        //                 'Eliminado!',
-        //                 'El registro fue eliminado correctamente',
-        //                 'success'
-        //             )
-        //         }
-        //     })
+        function eliminar(id){
+            var url = '/product/'+id+'/destroy';
 
-        // }
+            console.log(id);
+            console.log(url);
+            Swal.fire({
+                title: 'Esta seguro?',
+                text: "Se eliminara el producto!",
+                showCancelButton: true,
+                //confirmButtonColor: '#3085d6',
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#28a745',
+                confirmButtonText: 'Si, eliminar!'
+            }).then((result) => {
+                //if (result.isConfirmed) {
+
+                    $.ajax({
+                        type: 'GET',
+                        url: url,
+                        data: {id:id},
+                        success: function (data) {
+                            console.log(data);
+                            Swal.fire(
+                                'Eliminado!',
+                                'El registro fue eliminado correctamente',
+                                'success'
+                            ).then(() => {
+                                window.location.href = "{{ route('product.index') }}";
+                            });
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.table(jqXHR)
+                        }
+                    });
+                //}
+            })
+        }
     </script>
 @stop

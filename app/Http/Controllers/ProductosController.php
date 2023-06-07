@@ -14,8 +14,7 @@ class ProductosController extends Controller
     public function index()
     {
         $products = DB::table('products')->whereNull('deleted_at')->get();
-        //$products = Product::all();
-        //dd($products);
+
         return view('product.index', compact('products'));
     }
 
@@ -41,7 +40,7 @@ class ProductosController extends Controller
             'stock_minimo'      => $request['stock_minimo'],
         ]);
 
-        $codigo = $this->generarCodigo($product->id);
+        $codigo = generarCodigo($product->id,'c');
 
         $product->codigo = $codigo;
         $product->save();
@@ -88,21 +87,15 @@ class ProductosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        $product = Product::find($id);
+
+        $product = Product::find($request->id);
         $product->delete();
 
-        return redirect()->route('product.index');
+        return $product;
+        //return redirect()->route('product.index');
     }
 
-    public function generarCodigo ($valor){
-        $letras = 'BK';
-        $longitudTotal = 8;
 
-        $cantidadCeros = $longitudTotal - strlen($letras) - strlen($valor);
-        $codigo = $letras . '-' . str_repeat('0', $cantidadCeros) . $valor;
-
-        return $codigo;
-    }
 }
