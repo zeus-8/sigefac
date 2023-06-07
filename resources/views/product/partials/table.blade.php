@@ -28,7 +28,7 @@
                                 <td>{{$product->stock}}</td>
                                 <td class="text-center">
                                     {!! Form::hidden('id', $product->id) !!}
-                                    <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#show-product"><i class=" fas fa-eye"></i></a>
+                                    <button class="btn btn-primary btn-sm" onclick="sendCode({{$product->id}})"><i class=" fas fa-eye"></i></button>
                                     <a href="{{ route('product.edit', $product->id)}}" class="btn btn-warning btn-sm"><i class=" fas fa-edit"></i></a>
                                     <a href="{{ route('product.destroy', $product->id)}}" onclick="return confirm('¿Seguro que deseas eliminarlo?')" class="btn btn-danger btn-sm"><i class=" fas fa-trash"></i></a>
                                 </td>
@@ -41,34 +41,69 @@
     </div>
 </div>
 
+
 @include('product.partials.modal')
 
 @section('js')
     <script>
         $(document).ready(function() {
-            $('#show-product').on('show.bs.modal', function (event) {
-                var token = $('input[name="_token"]').val();
-                var url = '/product/show';
-                var id =
-                $.ajax({
-                    url: url,
-                    type: 'GET',
-                    data:{
-                        id:1,
-                        _token: token
-                    },
-                    success: function(response) {
-                       alert('respose');
-                    },
-                    error: function(xhr, status, error) {
-                        // Manejar el error
-                    }
-                });
-            });
+
         });
 
         function sendCode (id){
-            
+
+            var url = '/product/show';
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                data:{
+                    id:id,
+                },
+                success: function(data) {
+                    console.log(data);
+                    var colorClass = null;
+
+                    const formatter = new Intl.NumberFormat('es', {
+                        minimumFractionDigits: 3,
+                        maximumFractionDigits: 3,
+                    });
+                    var price = formatter.format(data.precio_compra);
+
+                    if (data.stock <= data.stock_minimo){
+                        colorClass = 'text-danger';
+                    }else{
+                        colorClass='text-success';
+                    }
+
+                    var template =`
+                    <dl class="row">
+                        <dt class="col-sm-4 text-right">Codigo:</dt>
+                        <dd class="col-sm-8 text-left">${data.codigo}</dd>
+                        <dt class="col-sm-4 text-right">Descripcion:</dt>
+                        <dd class="col-sm-8 text-left">${data.descripcion}</dd>
+                        <dt class="col-sm-4 text-right ">Stock</dt>
+                        <dd class="col-sm-8 text-left ${colorClass}"><b>${data.stock}</b></dd>
+                        <dt class="col-sm-4 text-right">Stock Minimo</dt>
+                        <dd class="col-sm-8 text-left">${data.stock_minimo}</dd>
+                        <dt class="col-sm-4 text-right">Precion Ultima Compra</dt>
+                        <dd class="col-sm-8 text-left"><b>${price}</b></dd>
+                    </dl>
+                    `;
+
+                    $('.modal-title').empty();
+                    $('.modal-body').empty();
+
+                    $('.modal-title').html('<b>'+data.codigo+' - '+data.descripcion+'</b>');
+                    $('.modal-body').html(template);
+
+
+                    $('#show-product').modal('show')
+                },
+                error: function(xhr, status, error) {
+                    // Manejar el error
+                }
+            });
         }
 
         $('#products').DataTable({
@@ -80,6 +115,8 @@
             "autoWidth": false,
             "responsive": true,
         });
+
+
 
         // function eliminar(){
         //     Swal.fire({

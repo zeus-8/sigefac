@@ -54,8 +54,8 @@ class ProductosController extends Controller
      */
     public function show(Request $request)
     {
-        $x = 'bien';
-        return $x;
+        $product = Product::find($request->id);
+        return $product;
     }
 
     /**

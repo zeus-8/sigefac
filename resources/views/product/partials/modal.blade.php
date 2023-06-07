@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Large Modal</h4>
+                <div class="modal-title">Large Modal</div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -11,8 +11,8 @@
                 <p>One fine body&hellip;</p>
             </div>
             <div class="modal-footer justify-content-rigth">
-                {{-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> --}}
-                <button type="button" class="btn btn-success">OK</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                {{-- <button type="button" class="btn btn-success">OK</button> --}}
             </div>
         </div>
     </div>
