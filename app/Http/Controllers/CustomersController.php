@@ -14,7 +14,9 @@ class CustomersController extends Controller
      */
     public function index()
     {
-
+        $customers = Customer::whereNull('deleted_at')->get();
+        //dd($customers);
+        return view('customer.index', compact('customers'));
     }
 
     /**
@@ -79,7 +81,12 @@ class CustomersController extends Controller
      */
     public function edit(string $id)
     {
-        $customer = Customer::find($id);
+        $customer = DB::table('customers')->select('customers.id','customers.codigo_cliente' , 'customers.tipo_doc', 'customers.documento_cliente', 'customers.razon_social','customers.direccion', 'customers.telefono', 'customers.mail', 'destinations.contacto', 'destinations.telef_contac', 'destinations.punto_partida', 'destinations.punto_llegada', 'destinations.placa', 'destinations.documento_chofer')
+                                    ->leftJoin('destinations', 'destinations.customer_id', '=', 'customers.id')
+                                    ->where('customers.id', $id)
+                                    ->first();
+        //dd($customer);
+        return view('customer.edit', compact('customer'));
     }
 
     /**

@@ -17,7 +17,7 @@
 
                     @include('customer.partials.form')
 
-                    <div class="d-flex justify-content-end">
+                    <div class="card-footer">
                         {{-- {!! Form::reset("Borrar", ['class' => 'btn btn-info']) !!} --}}
                         {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
                         <a href="{{route('customer.index')}}" class="btn btn-danger">Cancelar</a>

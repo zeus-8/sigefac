@@ -331,7 +331,7 @@ return [
         ],
         [
             'text' => 'Clientes',
-            'url'  => '',
+            'url'  => 'customer/',
             'icon' => 'fas fa-fw fa-users',
         ],
         [

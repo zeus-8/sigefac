@@ -40,7 +40,7 @@ class ProductosController extends Controller
             'stock_minimo'      => $request['stock_minimo'],
         ]);
 
-        $codigo = generarCodigo($product->id,'c');
+        $codigo = generarCodigo($product->id,'p');
 
         $product->codigo = $codigo;
         $product->save();

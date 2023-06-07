@@ -27,7 +27,6 @@
                                 <td>{{$product->descripcion}}</td>
                                 <td>{{$product->stock}}</td>
                                 <td class="text-center">
-                                    {!! Form::hidden('id', $product->id) !!}
                                     <button class="btn btn-primary btn-sm" onclick="sendCode({{$product->id}})"><i class=" fas fa-eye"></i></button>
                                     <a href="{{ route('product.edit', $product->id)}}" class="btn btn-warning btn-sm"><i class=" fas fa-edit"></i></a>
                                     <button class="btn btn-danger btn-sm" onclick="eliminar({{$product->id}})"><i class=" fas fa-trash"></i></button>
