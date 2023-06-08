@@ -140,7 +140,7 @@
                             console.log(data);
                             Swal.fire(
                                 'Eliminado!',
-                                'El registro fue eliminado correctamente',
+                                'El registro '+data.codigo+' fue eliminado correctamente',
                                 'success'
                             ).then(() => {
                                 window.location.href = "{{ route('product.index') }}";

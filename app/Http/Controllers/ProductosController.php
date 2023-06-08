@@ -90,10 +90,8 @@ class ProductosController extends Controller
      */
     public function destroy(Request $request)
     {
-
         $product = Product::find($request->id);
         $product->delete();
-
         return $product;
         //return redirect()->route('product.index');
     }
