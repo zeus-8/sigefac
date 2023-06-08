@@ -121,8 +121,6 @@
         function eliminar(id){
             var url = '/product/'+id+'/destroy';
 
-            console.log(id);
-            console.log(url);
             Swal.fire({
                 title: 'Esta seguro?',
                 text: "Se eliminara el producto!",
