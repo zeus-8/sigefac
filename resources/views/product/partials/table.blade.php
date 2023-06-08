@@ -116,8 +116,6 @@
             "responsive": true,
         });
 
-
-
         function eliminar(id){
             var url = '/product/'+id+'/destroy';
 
