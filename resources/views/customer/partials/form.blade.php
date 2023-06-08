@@ -4,9 +4,9 @@
             <div class="form-group{{ $errors->has('tipo_doc') ? ' has-error' : '' }}">
                 {!! Form::label('tipo_doc', '') !!}
                 {!! Form::select('tipo_doc', [
-                    'opcion1' => 'Sin Documento',
-                    'opcion2' => 'Ruc',
-                    'opcion3' => 'Documento',
+                    'sin_documento' => 'Sin Documento',
+                    'ruc' => 'Ruc',
+                    'dni' => 'DNI',
                 ], null, ['id' => 'tipo_doc', 'class' => 'form-control']) !!}
                 <small class="text-danger">{{ $errors->first('tipo_doc') }}</small>
             </div>
@@ -74,7 +74,7 @@
                 <div class="col-4">
                     <div class="form-group{{ $errors->has('punto_partida') ? ' has-error' : '' }}">
                         {!! Form::label('punto_partida', 'Punto de Partida') !!}
-                        {!! Form::text('punto_partida', null, ['class' => 'form-control', 'placeholder' => 'Punto de Partida']) !!}
+                        {!! Form::text('punto_partida', 'CAL. COMANDANTE CANGA 210', ['class' => 'form-control', 'placeholder' => 'Punto de Partida']) !!}
                         <small class="text-danger">{{ $errors->first('punto_partida') }}</small>
                     </div>
                 </div>
@@ -86,16 +86,16 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <div class="form-group{{ $errors->has('palca') ? ' has-error' : '' }}">
-                        {!! Form::label('palca', 'Placa') !!}
-                        {!! Form::text('palca', null, ['class' => 'form-control', 'placeholder' => 'Placa']) !!}
-                        <small class="text-danger">{{ $errors->first('palca') }}</small>
+                    <div class="form-group{{ $errors->has('placa') ? ' has-error' : '' }}">
+                        {!! Form::label('placa', 'Placa') !!}
+                        {!! Form::text('placa', 'A6V671', ['class' => 'form-control', 'placeholder' => 'Placa']) !!}
+                        <small class="text-danger">{{ $errors->first('placa') }}</small>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-group{{ $errors->has('documento_chofer') ? ' has-error' : '' }}">
                         {!! Form::label('documento_chofer', 'Dni del Chofer') !!}
-                        {!! Form::text('documento_chofer', null, ['class' => 'form-control', 'placeholder' => 'Dni del Chofer']) !!}
+                        {!! Form::text('documento_chofer', '002248112', ['class' => 'form-control', 'placeholder' => 'Dni del Chofer']) !!}
                         <small class="text-danger">{{ $errors->first('documento_chofer') }}</small>
                     </div>
                 </div>

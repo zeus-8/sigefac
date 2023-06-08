@@ -42,7 +42,7 @@
 </div>
 
 
-@include('product.partials.modal')
+@include('customer.partials.modal')
 
 @section('js')
     <script>
@@ -62,43 +62,65 @@
                 },
                 success: function(data) {
                     //console.log(data);
-                    var colorClass = null;
+                    var razon           = (data.razon_social === null) ? 'N/A' : data.razon_social;
+                    var jQdireccion     = (data.direccion === null) ? 'N/A' : data.direccion;
+                    var jQtelefono      = (data.telefono === null) ? 'N/A' : data.telefono;
+                    var jQmail          = (data.mail === null) ? 'N/A' : data.mail;
+                    var jQcontacto      = (data.contacto === null) ? 'N/A' : data.contacto;
+                    var jQtelef_contac  = (data.telef_contac === null) ? 'N/A' : data.telef_contac;
+                    var jQpunto_partida = (data.punto_partida === null) ? 'N/A' : data.punto_partida;
+                    var jQpunto_llegada = (data.punto_llegada === null) ? 'N/A' : data.punto_llegada;
+                    var jQplaca         = (data.placa === null) ? 'N/A' : data.placa;
+                    var jQdocumento_chofer = (data.documento_chofer === null) ? 'N/A' : data.documento_chofer;
+                    var tipo = null;
 
-                    const formatter = new Intl.NumberFormat('es', {
-                        minimumFractionDigits: 3,
-                        maximumFractionDigits: 3,
-                    });
-                    var price = formatter.format(data.precio_compra);
-
-                    if (data.stock <= data.stock_minimo){
-                        colorClass = 'text-danger';
-                    }else{
-                        colorClass='text-success';
+                    if (data.tipo_doc === 'sin_documento') {
+                        tipo = 'Sin Documento';
+                    } else if (data.tipo_doc === 'ruc') {
+                        tipo = 'RUC';
+                    } else if (data.tipo_doc === 'dni') {
+                        tipo = 'DNI';
                     }
+                    var documento          = (data.documento_cliente === null) ? tipo + ' - N/A' : tipo + ' - ' + data.documento_cliente;
 
                     var template =`
                     <dl class="row">
-                        <dt class="col-sm-4 text-right">Codigo:</dt>
-                        <dd class="col-sm-8 text-left">${data.codigo}</dd>
-                        <dt class="col-sm-4 text-right">Descripcion:</dt>
-                        <dd class="col-sm-8 text-left">${data.descripcion}</dd>
-                        <dt class="col-sm-4 text-right ">Stock</dt>
-                        <dd class="col-sm-8 text-left ${colorClass}"><b>${data.stock}</b></dd>
-                        <dt class="col-sm-4 text-right">Stock Minimo</dt>
-                        <dd class="col-sm-8 text-left">${data.stock_minimo}</dd>
-                        <dt class="col-sm-4 text-right">Precion Ultima Compra</dt>
-                        <dd class="col-sm-8 text-left"><b>${price}</b></dd>
+                        <dt class="col-sm-5 text-right">Codigo:</dt>
+                        <dd class="col-sm-7 text-left">${data.codigo_cliente}</dd>
+                        <dt class="col-sm-5 text-right">Documento:</dt>
+                        <dd class="col-sm-7 text-left">${documento}</dd>
+                        <dt class="col-sm-5 text-right ">Razon Social:</dt>
+                        <dd class="col-sm-7 text-left">${razon}</dd>
+                        <dt class="col-sm-5 text-right">Direccion:</dt>
+                        <dd class="col-sm-7 text-left">${jQdireccion}</dd>
+                        <dt class="col-sm-5 text-right">Telefono:</dt>
+                        <dd class="col-sm-7 text-left">${jQtelefono}</dd>
+                        <dt class="col-sm-5 text-right">Email:</dt>
+                        <dd class="col-sm-7 text-left">${jQmail}</dd>
+
+                        <dt class="col-sm-5 text-right">Contacto:</dt>
+                        <dd class="col-sm-7 text-left">${jQcontacto}</dd>
+                        <dt class="col-sm-5 text-right">Telefono de Contacto:</dt>
+                        <dd class="col-sm-7 text-left">${jQtelef_contac}</dd>
+                        <dt class="col-sm-5 text-right">Punto de Partida:</dt>
+                        <dd class="col-sm-7 text-left">${jQpunto_partida}</dd>
+                        <dt class="col-sm-5 text-right">Punto de Llegada:</dt>
+                        <dd class="col-sm-7 text-left">${jQpunto_llegada}</dd>
+                        <dt class="col-sm-5 text-right">Placa:</dt>
+                        <dd class="col-sm-7 text-left">${jQplaca}</dd>
+                        <dt class="col-sm-5 text-right">Documento del Chofer:</dt>
+                        <dd class="col-sm-7 text-left">${jQdocumento_chofer}</dd>
                     </dl>
                     `;
 
                     $('.modal-title').empty();
                     $('.modal-body').empty();
 
-                    $('.modal-title').html('<b>'+data.codigo+' - '+data.descripcion+'</b>');
+                    $('.modal-title').html('<b>'+data.codigo_cliente+' - '+razon+'</b>');
                     $('.modal-body').html(template);
 
 
-                    $('#show-product').modal('show')
+                    $('#show-customer').modal('show')
                 },
                 error: function(xhr, status, error) {
                     // Manejar el error
@@ -119,10 +141,8 @@
 
 
         function eliminar(id){
-            var url = '/product/'+id+'/destroy';
+            var url = '/customer/'+id+'/destroy';
 
-            console.log(id);
-            console.log(url);
             Swal.fire({
                 title: 'Esta seguro?',
                 text: "Se eliminara el producto!",
@@ -133,19 +153,18 @@
                 confirmButtonText: 'Si, eliminar!'
             }).then((result) => {
                 //if (result.isConfirmed) {
-
                     $.ajax({
                         type: 'GET',
                         url: url,
                         data: {id:id},
                         success: function (data) {
-                            console.log(data);
+                            //console.log(data);
                             Swal.fire(
                                 'Eliminado!',
-                                'El registro fue eliminado correctamente',
+                                'El registro '+data.codigo_cliente+' fue eliminado correctamente',
                                 'success'
                             ).then(() => {
-                                window.location.href = "{{ route('product.index') }}";
+                                window.location.href = "{{ route('customer.index') }}";
                             });
                         },
                         error: function (jqXHR, textStatus, errorThrown) {

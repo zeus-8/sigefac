@@ -11,7 +11,7 @@ class Destination extends Model
     use HasFactory, SoftDeletes;
 
     protected $table = 'destinations';
-    protected $fillable = ['id','customer_id', 'punto_partida', 'punto_llegada', 'documento_chofer'];
+    protected $fillable = ['id','customer_id', 'contacto', 'telef_contac',  'punto_partida', 'punto_llegada', 'placa', 'documento_chofer'];
 
     public function customer()
     {

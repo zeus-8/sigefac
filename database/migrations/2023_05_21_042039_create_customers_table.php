@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->char('codigo_cliente');
-            $table->enum('tipo_doc', ['documento', 'ruc','sin_documento']);
+            $table->enum('tipo_doc', ['dni', 'ruc','sin_documento']);
             $table->integer('documento_cliente');
             $table->char('razon_social');
             $table->char('direccion');
             $table->integer('telefono');
             $table->char('mail');
             $table->char('contacto');
-            $table->integer('telef_contac');
+            $table->string('telef_contac');
             $table->timestamps();
             $table->softDeletes();
         });

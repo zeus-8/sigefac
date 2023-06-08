@@ -11,7 +11,7 @@ class Customer extends Model
     use HasFactory, SoftDeletes;
 
     protected $table = 'customers';
-    protected $fillablle = ['id', 'codigo_cliente', 'tipo_doc', 'documento_cliente', 'razon_social', 'direccion', 'telefono', 'mail'];
+    protected $fillable = ['id', 'codigo_cliente', 'tipo_doc', 'documento_cliente', 'razon_social', 'direccion', 'telefono', 'mail'];
 
     public function destinations()
     {

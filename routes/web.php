@@ -43,7 +43,7 @@ Route::prefix('customer')->group(function () {
     Route::get('/'              , [CustomersController::class, 'index'])    ->name('customer.index');
     Route::get('/create'        , [CustomersController::class, 'create'])   ->name('customer.create');
     Route::post('/create'       , [CustomersController::class, 'store'])    ->name('customer.store');
-    Route::get('/show'          , [CustomersController::class , 'show'])     ->name('customer.show');
+    Route::get('/show'          , [CustomersController::class , 'show'])    ->name('customer.show');
     Route::get('/{id}/edit'     , [CustomersController::class, 'edit'])     ->name('customer.edit');
     Route::put('/{id}'          , [CustomersController::class, 'update'])   ->name('customer.update');
     Route::get('/{id}/destroy'  , [CustomersController::class, 'destroy'])  ->name('customer.destroy');
