@@ -335,9 +335,25 @@ return [
             'icon' => 'fas fa-fw fa-users',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Proveedores',
+            'url'  => 'customer/',
+            'icon' => 'fas fa-fw fa-truck',
+        ],
+        [
+            'text'    => 'Configuracion',
+            'icon'    => 'fas fa-fw  fa-cogs',
+            'submenu' => [
+                [
+                    'text' => 'change_password',
+                    'url'  => 'admin/settings',
+                    'icon' => 'fas fa-fw fa-lock',
+                ],
+                [
+                    'text' => 'Parametros',
+                    'url'  => '#',
+                    'icon' => 'fas fa-fw fa-check-square',
+                ],
+            ]
         ],
         [
             'text'    => 'multilevel',
