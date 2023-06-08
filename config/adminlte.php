@@ -356,6 +356,33 @@ return [
             ]
         ],
         [
+            'text'    => 'Eliminados',
+            'icon'    => 'fas fa-fw   fa-trash',
+            'submenu' => [
+                [
+                    'text' => 'Clientes',
+                    'url'  => 'admin/settings',
+                    'icon' => 'fas fa-fw fa-user',
+                ],
+                [
+                    'text' => 'Productos',
+                    'url'  => '#',
+                    'icon' => 'fas fa-fw fa-barcode',
+                ],
+                [
+                    'text' => 'Usuarios',
+                    'url'  => '#',
+                    'icon' => 'fas fa-fw fa-user',
+                ],
+                [
+                    'text' => 'Orden de Compra',
+                    'url'  => '#',
+                    
+                ],
+
+            ]
+        ],
+        [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
