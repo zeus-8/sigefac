@@ -336,7 +336,12 @@ return [
         ],
         [
             'text' => 'Proveedores',
-            'url'  => 'customer/',
+            'url'  => '#',
+            'icon' => 'fas fa-fw fa-truck',
+        ],
+        [
+            'text' => 'Inventario',
+            'url'  => '#',
             'icon' => 'fas fa-fw fa-truck',
         ],
         [
@@ -361,7 +366,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Clientes',
-                    'url'  => 'admin/settings',
+                    'url'  => '#',
                     'icon' => 'fas fa-fw fa-user',
                 ],
                 [
@@ -377,7 +382,7 @@ return [
                 [
                     'text' => 'Orden de Compra',
                     'url'  => '#',
-                    
+
                 ],
 
             ]

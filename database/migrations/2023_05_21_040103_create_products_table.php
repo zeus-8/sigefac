@@ -17,9 +17,12 @@ return new class extends Migration
 
             $table->char('codigo')->nullable();
             $table->char('descripcion');
-            $table->integer('stock');
-            $table->integer('stock_minimo');
+            $table->integer('stock', 2)->default(0);
+            $table->integer('stock_minimo', 2)->default(0);
             $table->decimal('precio_compra', 8, 3);
+
+            $table->unsignedBigInteger('brand_id');
+            $table->foreign('brand_id')->references('id')->on('brands');
 
             $table->timestamps();
             $table->softDeletes();

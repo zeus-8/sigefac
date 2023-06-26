@@ -47,6 +47,24 @@ Route::prefix('customer')->group(function () {
     Route::get('/{id}/edit'     , [CustomersController::class, 'edit'])     ->name('customer.edit');
     Route::put('/{id}'          , [CustomersController::class, 'update'])   ->name('customer.update');
     Route::get('/{id}/destroy'  , [CustomersController::class, 'destroy'])  ->name('customer.destroy');
-
 });
+Route::prefix('provider')->group(function () {
+    Route::get('/'              , [ProvidersController::class, 'index'])    ->name('provider.index');
+    Route::get('/create'        , [ProvidersController::class, 'create'])   ->name('provider.create');
+    Route::post('/create'       , [ProvidersController::class, 'store'])    ->name('provider.store');
+    Route::get('/show'          , [ProvidersController::class , 'show'])    ->name('provider.show');
+    Route::get('/{id}/edit'     , [ProvidersController::class, 'edit'])     ->name('provider.edit');
+    Route::put('/{id}'          , [ProvidersController::class, 'update'])   ->name('provider.update');
+    Route::get('/{id}/destroy'  , [ProvidersController::class, 'destroy'])  ->name('provider.destroy');
+});
+Route::prefix('brand')->group(function () {
+    Route::get('/'              , [BrandsController::class, 'index'])    ->name('brand.index');
+    Route::get('/create'        , [BrandsController::class, 'create'])   ->name('brand.create');
+    Route::post('/create'       , [BrandsController::class, 'store'])    ->name('brand.store');
+    Route::get('/show'          , [BrandsController::class , 'show'])    ->name('brand.show');
+    Route::get('/{id}/edit'     , [BrandsController::class, 'edit'])     ->name('brand.edit');
+    Route::put('/{id}'          , [BrandsController::class, 'update'])   ->name('brand.update');
+    Route::get('/{id}/destroy'  , [BrandsController::class, 'destroy'])  ->name('brand.destroy');
+});
+
 
