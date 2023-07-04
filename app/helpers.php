@@ -9,8 +9,11 @@ function generarCodigo($valor, $module){
         case 'c':
             $letras = 'C-BK';
             break;
+        case 'pr':
+            $letras = 'PRBK';
+            break;
         default:
-            # code...
+            $letras = 'DEFAULT';
             break;
     }
     //$letras = 'BK';
