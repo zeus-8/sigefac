@@ -15,18 +15,19 @@ class ProviderSeeder extends Seeder
     {
         DB::table('providers')->insert(
             [
+                'codigo_proveedor' => 'PRBK-00001',
                 'direcion' => 'N/A',
                 'telefono' => '',
-                'mail'     => '0@mail.com',
+                'mail'     => 'na@mail.com',
                 'razon_social' => 'N/A'
             ],
             [
+                'codigo_proveedor' => 'PRBK-00001',
                 'direcion' => 'N/A',
                 'telefono' => '',
-                'mail'     => '1@mail.com',
+                'mail'     => 'na@mail.com',
                 'razon_social' => 'PAVCO'
             ],
-
 
         );
     }
