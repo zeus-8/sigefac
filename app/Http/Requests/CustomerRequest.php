@@ -22,7 +22,7 @@ class CustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'documento_cliente' => 'numeric',
+            'documento_cliente' => 'numeric|unique:customers,documento_cliente',
             'razon_social'      => 'required|min:5|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9\.\- ]+$/i',
             'direccion'         => 'required|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9\.\- ]+$/i',
             'telefono'          => 'numeric',
@@ -39,8 +39,8 @@ class CustomerRequest extends FormRequest
     public function messages()
     {
         return [
-            'documento_cliente.required'    => 'El campo RUC o Documento es requerido',
             'documento_cliente.numeric'     => 'El campo RUC o Documento deber numérico',
+            'documento_cliente.unique'      => 'El número de RUC o Documento ya existe',
             'razon_social.required'         => 'El campo Razón Social es requerido',
             'razon_social.min'              => 'El campo Razón Social debe tener almenos 5 caracteres',
             'direccion.required'            => 'El campo Direccion es requerida',
