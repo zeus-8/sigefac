@@ -336,7 +336,7 @@ return [
         ],
         [
             'text' => 'Proveedores',
-            'url'  => '#',
+            'url'  => 'provider/',
             'icon' => 'fas fa-fw fa-truck',
         ],
         [
