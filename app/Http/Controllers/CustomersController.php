@@ -33,8 +33,8 @@ class CustomersController extends Controller
      */
     public function store(CustomerRequest $request)
     {
-        //DB::beginTransaction();
         //dd($request->all());
+        //DB::beginTransaction();
         //try {
             $customer = Customer::create([
                 'tipo_doc'          => $request['tipo_doc'],
@@ -55,20 +55,23 @@ class CustomersController extends Controller
             //DB::rollback();
         //}
 
-        //DB::beginTransaction();
+        if (isset($request['remito'])) {
+            //DB::beginTransaction();
 
-        //try {
-            Destination::create([
-                'customer_id'       => $customer->id,
-                'punto_partida'     => $request['punto_partida'],
-                'punto_llegada'     => $request['punto_llegada'],
-                'placa'             => $request['placa'],
-                'documento_chofer'  => $request['documento_chofer'],
-            ]);
-            //DB::commit();
-        //} catch (\Throwable $th) {
-            //DB::rollback();
-        //}
+            //try {
+
+                Destination::create([
+                    'customer_id'       => $customer->id,
+                    'punto_partida'     => $request['punto_partida'],
+                    'punto_llegada'     => $request['punto_llegada'],
+                    'placa'             => $request['placa'],
+                    'documento_chofer'  => $request['documento_chofer'],
+                ]);
+                //DB::commit();
+            //} catch (\Throwable $th) {
+                //DB::rollback();
+            //}
+        }
         return redirect()->route('customer.index');
     }
 

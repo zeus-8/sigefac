@@ -51,55 +51,80 @@
                 <small class="text-danger">{{ $errors->first('mail') }}</small>
             </div>
         </div>
-
     </div>
-    <hr>
     <div class="row justify-content-md-center">
-        <div class="col-10">
-            <div class="row">
-                <div class="col-4">
-                    <div class="form-group{{ $errors->has('contacto') ? ' has-error' : '' }}">
-                        {!! Form::label('contacto', 'Contacto') !!}
-                        {!! Form::text('contacto', null, ['class' => 'form-control', 'placeholder' => 'Contacto']) !!}
-                        <small class="text-danger">{{ $errors->first('contacto') }}</small>
+        <div class="col-3">
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="customSwitch1" name="remito" value="1">
+                <label class="custom-control-label" for="customSwitch1">Direccion de Remito</label>
+            </div>
+        </div>
+    </div>
+    <div id="remito" style="display: none">
+        <hr>
+        <div class="row justify-content-md-center">
+            <div class="col-10">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group{{ $errors->has('contacto') ? ' has-error' : '' }}">
+                            {!! Form::label('contacto', 'Contacto') !!}
+                            {!! Form::text('contacto', null, ['class' => 'form-control', 'placeholder' => 'Contacto']) !!}
+                            <small class="text-danger">{{ $errors->first('contacto') }}</small>
+                        </div>
                     </div>
-                </div>
-                <div class="col-4">
-                    <div class="form-group{{ $errors->has('telef_contac') ? ' has-error' : '' }}">
-                        {!! Form::label('telef_contac', 'Telefono de Contacto') !!}
-                        {!! Form::text('telef_contac', null, ['class' => 'form-control', 'placeholder' => 'Telefono de Contacto']) !!}
-                        <small class="text-danger">{{ $errors->first('telef_contac') }}</small>
+                    <div class="col-4">
+                        <div class="form-group{{ $errors->has('telef_contac') ? ' has-error' : '' }}">
+                            {!! Form::label('telef_contac', 'Telefono de Contacto') !!}
+                            {!! Form::text('telef_contac', null, ['class' => 'form-control', 'placeholder' => 'Telefono de Contacto']) !!}
+                            <small class="text-danger">{{ $errors->first('telef_contac') }}</small>
+                        </div>
                     </div>
-                </div>
-                <div class="col-4">
-                    <div class="form-group{{ $errors->has('punto_partida') ? ' has-error' : '' }}">
-                        {!! Form::label('punto_partida', 'Punto de Partida') !!}
-                        {!! Form::text('punto_partida', 'CAL. COMANDANTE CANGA 210', ['class' => 'form-control', 'placeholder' => 'Punto de Partida']) !!}
-                        <small class="text-danger">{{ $errors->first('punto_partida') }}</small>
+                    <div class="col-4">
+                        <div class="form-group{{ $errors->has('punto_partida') ? ' has-error' : '' }}">
+                            {!! Form::label('punto_partida', 'Punto de Partida') !!}
+                            {!! Form::text('punto_partida', 'CAL. COMANDANTE CANGA 210', ['class' => 'form-control', 'placeholder' => 'Punto de Partida']) !!}
+                            <small class="text-danger">{{ $errors->first('punto_partida') }}</small>
+                        </div>
                     </div>
-                </div>
-                <div class="col-4">
-                    <div class="form-group{{ $errors->has('punto_llegada') ? ' has-error' : '' }}">
-                        {!! Form::label('punto_llegada', 'Punto de Llegada') !!}
-                        {!! Form::text('punto_llegada', null, ['class' => 'form-control', 'placeholder' => 'Punto de Llegada']) !!}
-                        <small class="text-danger">{{ $errors->first('punto_llegada') }}</small>
+                    <div class="col-4">
+                        <div class="form-group{{ $errors->has('punto_llegada') ? ' has-error' : '' }}">
+                            {!! Form::label('punto_llegada', 'Punto de Llegada') !!}
+                            {!! Form::text('punto_llegada', null, ['class' => 'form-control', 'placeholder' => 'Punto de Llegada']) !!}
+                            <small class="text-danger">{{ $errors->first('punto_llegada') }}</small>
+                        </div>
                     </div>
-                </div>
-                <div class="col-4">
-                    <div class="form-group{{ $errors->has('placa') ? ' has-error' : '' }}">
-                        {!! Form::label('placa', 'Placa') !!}
-                        {!! Form::text('placa', 'A6V671', ['class' => 'form-control', 'placeholder' => 'Placa']) !!}
-                        <small class="text-danger">{{ $errors->first('placa') }}</small>
+                    <div class="col-4">
+                        <div class="form-group{{ $errors->has('placa') ? ' has-error' : '' }}">
+                            {!! Form::label('placa', 'Placa') !!}
+                            {!! Form::text('placa', 'A6V671', ['class' => 'form-control', 'placeholder' => 'Placa']) !!}
+                            <small class="text-danger">{{ $errors->first('placa') }}</small>
+                        </div>
                     </div>
-                </div>
-                <div class="col-4">
-                    <div class="form-group{{ $errors->has('documento_chofer') ? ' has-error' : '' }}">
-                        {!! Form::label('documento_chofer', 'Dni del Chofer') !!}
-                        {!! Form::text('documento_chofer', '002248112', ['class' => 'form-control', 'placeholder' => 'Dni del Chofer']) !!}
-                        <small class="text-danger">{{ $errors->first('documento_chofer') }}</small>
+                    <div class="col-4">
+                        <div class="form-group{{ $errors->has('documento_chofer') ? ' has-error' : '' }}">
+                            {!! Form::label('documento_chofer', 'Dni del Chofer') !!}
+                            {!! Form::text('documento_chofer', '002248112', ['class' => 'form-control', 'placeholder' => 'Dni del Chofer']) !!}
+                            <small class="text-danger">{{ $errors->first('documento_chofer') }}</small>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
+
+@section('js')
+    <script>
+        $(document).ready(function() {
+            $('#customSwitch1').on('change', function() {
+                if ($(this).is(':checked')) {
+                    $('#remito').show();
+                } else {
+                    $('#remito').hide();
+                }
+            });
+        });
+
+    </script>
+@stop

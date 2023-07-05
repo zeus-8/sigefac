@@ -14,7 +14,8 @@
                 <table id="customers" class="table table-bordered table-striped table-sm">
                     <thead>
                         <tr>
-                            <th>codigo</th>
+                            <th>Codigo</th>
+                            <th>Documento</th>
                             <th>Razon Social</th>
                             <th>Email</th>
                             <th class="text-center">Accion</th>
@@ -24,6 +25,7 @@
                         @foreach ($customers as $customer)
                             <tr>
                                 <td>{{$customer->codigo_cliente}}</td>
+                                <td>{{$customer->documento_cliente}}</td>
                                 <td>{{$customer->razon_social}}</td>
                                 <td>{{$customer->mail}}</td>
                                 <td class="text-center">

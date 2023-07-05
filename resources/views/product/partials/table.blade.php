@@ -14,7 +14,8 @@
                 <table id="products" class="table table-bordered table-striped table-sm">
                     <thead>
                         <tr>
-                            <th>codigo</th>
+                            <th>Cod Bk</th>
+                            <th>Cod Proveedor</th>
                             <th>Descripcion</th>
                             <th>Stock</th>
                             <th class="text-center">Accion</th>
