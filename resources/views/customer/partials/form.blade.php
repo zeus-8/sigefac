@@ -54,7 +54,7 @@
     </div>
     <div class="row justify-content-md-center">
         <div class="col-3">
-            <div class="custom-control custom-switch">
+            <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
                 <input type="checkbox" class="custom-control-input" id="customSwitch1" name="remito" value="1">
                 <label class="custom-control-label" for="customSwitch1">Direccion de Remito</label>
             </div>
