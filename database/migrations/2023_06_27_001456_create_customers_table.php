@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
 
-            $table->char('codigo_cliente')->nullable();
+            $table->char('codigo_cliente')->unique()->nullable();
             $table->enum('tipo_doc', ['dni', 'ruc','sin_documento']);
-            $table->integer('documento_cliente');
+            $table->bigInteger('documento_cliente')->unique()->nullable();
             $table->char('razon_social');
             $table->char('direccion');
             $table->integer('telefono');
