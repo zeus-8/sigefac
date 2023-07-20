@@ -15,19 +15,25 @@ class ProviderSeeder extends Seeder
     {
         DB::table('providers')->insert(
             [
-                'codigo_proveedor' => 'PRBK-00001',
-                'direcion' => 'N/A',
-                'telefono' => '',
+                'codigo_proveedor' => 'PRBK-00000',
+                'direccion' => 'N/A',
+                'telefono' => '0',
                 'mail'     => 'na@mail.com',
-                'razon_social' => 'N/A'
-            ],
+                'razon_social' => 'N/A',
+                'created_at' => NOW(),
+                'updated_at' => NOW(),
+            ]
+        );
+        DB::table('providers')->insert(
             [
                 'codigo_proveedor' => 'PRBK-00001',
-                'direcion' => 'N/A',
-                'telefono' => '',
+                'direccion' => 'N/A',
+                'telefono' => '0',
                 'mail'     => 'na@mail.com',
-                'razon_social' => 'PAVCO'
-            ],
+                'razon_social' => 'PAVCO',
+                'created_at' => NOW(),
+                'updated_at' => NOW(),
+            ]
 
         );
     }

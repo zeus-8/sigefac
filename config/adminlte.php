@@ -362,30 +362,8 @@ return [
         ],
         [
             'text'    => 'Eliminados',
+            'url'     => 'trashed/',
             'icon'    => 'fas fa-fw   fa-trash',
-            'submenu' => [
-                [
-                    'text' => 'Clientes',
-                    'url'  => '#',
-                    'icon' => 'fas fa-fw fa-user',
-                ],
-                [
-                    'text' => 'Productos',
-                    'url'  => '#',
-                    'icon' => 'fas fa-fw fa-barcode',
-                ],
-                [
-                    'text' => 'Usuarios',
-                    'url'  => '#',
-                    'icon' => 'fas fa-fw fa-user',
-                ],
-                [
-                    'text' => 'Orden de Compra',
-                    'url'  => '#',
-
-                ],
-
-            ]
         ],
         [
             'text'    => 'multilevel',
@@ -514,7 +492,7 @@ return [
             ],
         ],
         'Chartjs' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

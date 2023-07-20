@@ -10,7 +10,13 @@ class Provider extends Model
 {
     use HasFactory, SoftDeletes;
 
+    
     protected $table = 'providers';
     //protected $guarded = []; //con guarded dices cuales quieres que excluya
     protected $fillable = ['id', 'codigo_proveedor', 'direccion', 'telefono', 'mail', 'razon_social']; // con fillable debes indicar cuales campos quieres que se guarden
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
+    }
 }

@@ -1,8 +1,4 @@
-{{-- <pre>
-    @php
-        var_dump($products);
-    @endphp
-</pre> --}}
+
 <div class="row justify-content-md-center">
     <div class="col-md-10">
         <div class="card">
@@ -61,7 +57,11 @@
                     id:id,
                 },
                 success: function(data) {
-                    //console.log(data);
+                    console.log(data);
+                    var contacto = (data.contacto !== null) ? data.contacto : 'N/A';
+                    var telefono_contac =(data.telefono_contac !== null) ? data.telefono_contac : 'N/A';
+                    console.log(contacto);
+                    console.log(telefono_contac);
                     var template =`
                     <dl class="row">
                         <dt class="col-sm-5 text-right">Codigo:</dt>
@@ -74,6 +74,10 @@
                         <dd class="col-sm-7 text-left">${data.telefono}</dd>
                         <dt class="col-sm-5 text-right">Email</dt>
                         <dd class="col-sm-7 text-left">${data.mail}</dd>
+                        <dt class="col-sm-5 text-right">Contacto</dt>
+                        <dd class="col-sm-7 text-left">${contacto}</dd>
+                        <dt class="col-sm-5 text-right">Teléfono del contacto</dt>
+                        <dd class="col-sm-7 text-left">${telefono_contac}</dd>
                     </dl>
                     `;
 

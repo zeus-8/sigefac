@@ -10,7 +10,13 @@ class Product extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'products';
-    protected $fillable = ['id', 'descripcion', 'stock', 'stock_minimo', 'precio_compra'];
 
+    protected $table = 'products';
+    protected $fillable = ['id', 'brand_id', 'unit_id', 'codigo', 'cod_prov', 'descripcion', 'cantidad_u', 'cantidad_eu', 'stock', 'stock_minimo', 'peso'];
+
+    public function providers()
+    {
+        return $this->belongsToMany(Provider::class, 'product_provider')
+                    ->withPivot('orden', 'cantidad', 'precio_compra', 'active');
+    }
 }

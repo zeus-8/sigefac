@@ -22,6 +22,8 @@ return new class extends Migration
 
             $table->char('orden')->nullable();
             $table->integer('cantidad')->nullable();
+            $table->decimal('precio_compra', 8, 3);
+            $table->boolean('active');
 
             $table->timestamps();
         });

@@ -17,6 +17,8 @@ return new class extends Migration
             $table->char('codigo_proveedor')->nullable();
             $table->char('direccion')->nullable();
             $table->integer('telefono')->nullable();
+            $table->char('contacto')->nullable();
+            $table->integer('telefono_contac')->nullable();
             $table->char('mail');
             $table->char('razon_social')->nullable();
 

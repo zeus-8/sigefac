@@ -25,9 +25,11 @@
                         @foreach ($products as $product)
                             <tr>
                                 <td>{{$product->codigo}}</td>
+                                <td>{{$product->cod_prov}}</td>
                                 <td>{{$product->descripcion}}</td>
                                 <td>{{$product->stock}}</td>
                                 <td class="text-center">
+                                    <a href="#" class="btn btn-success btn-sm"><i class=" fas fa-plus"></i></a>
                                     <button class="btn btn-primary btn-sm" onclick="sendCode({{$product->id}})"><i class=" fas fa-eye"></i></button>
                                     <a href="{{ route('product.edit', $product->id)}}" class="btn btn-warning btn-sm"><i class=" fas fa-edit"></i></a>
                                     <button class="btn btn-danger btn-sm" onclick="eliminar({{$product->id}})"><i class=" fas fa-trash"></i></button>
@@ -81,14 +83,18 @@
                     <dl class="row">
                         <dt class="col-sm-5 text-right">Codigo:</dt>
                         <dd class="col-sm-7 text-left">${data.codigo}</dd>
+                        <dt class="col-sm-5 text-right">Codigo del Proveedor:</dt>
+                        <dd class="col-sm-7 text-left">${data.cod_prov}</dd>
                         <dt class="col-sm-5 text-right">Descripcion:</dt>
                         <dd class="col-sm-7 text-left">${data.descripcion}</dd>
-                        <dt class="col-sm-5 text-right ">Stock</dt>
+                        <dt class="col-sm-5 text-right ">Cant. x Unidad:</dt>
+                        <dd class="col-sm-7 text-left">${data.cantidad_u} falta la unidad</dd>
+                        <dt class="col-sm-5 text-right ">Cant. en Unidad:</dt>
+                        <dd class="col-sm-7 text-left">${data.cantidad_eu}</dd>
+                        <dt class="col-sm-5 text-right ">Stock:</dt>
                         <dd class="col-sm-7 text-left ${colorClass}"><b>${data.stock}</b></dd>
-                        <dt class="col-sm-5 text-right">Stock Minimo</dt>
+                        <dt class="col-sm-5 text-right">Stock Minimo:</dt>
                         <dd class="col-sm-7 text-left">${data.stock_minimo}</dd>
-                        <dt class="col-sm-5 text-right">Precion Ultima Compra</dt>
-                        <dd class="col-sm-7 text-left"><b>${price}</b></dd>
                     </dl>
                     `;
 

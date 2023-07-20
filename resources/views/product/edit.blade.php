@@ -18,7 +18,7 @@
 
                 {!! Form::model($product, ['route' => ['product.update', $product->id], 'method' => 'PUT', 'class' => 'form-horizontal']) !!}
                     @include('product.partials.form')
-                    <div class="d-flex justify-content-end">
+                    <div class="card-footer">
                         {{-- {!! Form::reset("Borrar", ['class' => 'btn btn-info']) !!} --}}
                         {!! Form::submit('Moldificar', ['class' => 'btn btn-primary']) !!}
                         <a href="{{route('product.index')}}" class="btn btn-danger">Cancelar</a>

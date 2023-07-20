@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProviderRequest;
 use Illuminate\Http\Request;
 use App\Models\Provider;
 use Illuminate\Support\Facades\DB;
@@ -28,13 +29,14 @@ class ProvidersController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProviderRequest $request)
     {
         $provider = Provider::create([
-            'direccion' => $request['direccion'],
-            'telefono'  => $request['telefono'],
-            'mail'      => $request['mail'],
-            'razon_social' => $request['razon_social']
+            'direccion'     => $request['direccion'],
+            'telefono'      => $request['telefono'],
+            'mail'          => $request['mail'],
+            'razon_social'  => $request['razon_social'],
+            'contacto'      => $request['contacto']
         ]);
 
         $codigo = generarCodigo($provider->id, 'pr');
@@ -75,6 +77,8 @@ class ProvidersController extends Controller
         $provider->direccion = $request->direccion;
         $provider->telefono = $request->telefono;
         $provider->mail = $request->mail;
+        $provider->contacto = $request->contacto;
+        $provider->telefono_contac = $request->telefono_contac;
         $provider->save();
 
         return redirect()->route('provider.index');

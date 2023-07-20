@@ -14,14 +14,20 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('brand_id');
+            $table->unsignedBigInteger('brand_id')->default(0);
             $table->foreign('brand_id')->references('id')->on('brands');
 
+            $table->unsignedBigInteger('unit_id');
+            $table->foreign('unit_id')->references('id')->on('units');
+
             $table->char('codigo')->nullable();
+            $table->char('cod_prov')->nullable()->unique();
             $table->char('descripcion');
+            $table->integer('cantidad_u');
+            $table->integer('cantidad_eu');
             $table->integer('stock')->default(0);
             $table->integer('stock_minimo')->default(0);
-            $table->decimal('precio_compra', 8, 3);
+            $table->integer('peso');
 
             $table->timestamps();
             $table->softDeletes();
